@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset=utf-8 />
+  <title></title>
+  <script src='https://api.mapbox.com/mapbox.js/v2.4.0/mapbox.js'></script>
+  <link href='https://api.mapbox.com/mapbox.js/v2.4.0/mapbox.css' rel='stylesheet' />
+  <style>
+    body { margin:0; padding:0; }
+    .map { position:absolute; top:0; bottom:0; width:100%; }
+  </style>
+</head>
+<body>
+<div id='map-tooltips' class='map'> </div>
+<!-- jQuery is required for this example. -->
+<script src='https://code.jquery.com/jquery-1.11.0.min.js'></script>
+<script>
+L.mapbox.accessToken = 'pk.eyJ1Ijoic2hhIiwiYSI6ImNpemJuMzhzZDBjZngycXB4dThpMWc3YnMifQ.UTVqNsmfng8qHLNLEP5JvQ';
+var monument = [17.5055828, 40.6474206];
+var mapTooltips = L.mapbox.map('map-tooltips', 'mapbox.light')
+  .setView([40.6, 17.5], 8);
+var myLayer = L.mapbox.featureLayer().addTo(mapTooltips);
+
+function load() {
+  $.ajax({
+    headers: {
+      'Accept': 'application/vnd.github.v3.raw'
+    },
+    xhrFields: {
+      withCredentials: false
+    },
+    dataType: 'json',
+    url: 'data/salento.geojson',
+    success: function(geojson) {
+        // On success add fetched data to the map.
+        L.mapbox.featureLayer(geojson).addTo(mapTooltips);
+    }
+  });
+}
+
+$(load);
+
+mapTooltips.scrollWheelZoom.disable();
+</script>
+</body>
+</html>

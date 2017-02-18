@@ -1,0 +1,161 @@
+﻿{
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Matera",
+        "title": "Matera",
+        "description": "Just some stones"
+      },
+      "geometry": {
+        "coordinates": [
+          16.611356,
+          40.6687
+        ],
+        "type": "Point"
+      },
+      "id": "2af7a9e3c00b6131726541fc0700f94d"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "San Pietro in Bevagna"
+      },
+      "geometry": {
+        "coordinates": [
+          17.67284,
+          40.306614
+        ],
+        "type": "Point"
+      },
+      "id": "42cecafc29b3ed8e6fbdf8a47f6073b9"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Ostuni"
+      },
+      "geometry": {
+        "coordinates": [
+          17.574394,
+          40.726448
+        ],
+        "type": "Point"
+      },
+      "id": "4c44957a2eb3f2d1addeeff7c316a48c"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Lecce"
+      },
+      "geometry": {
+        "coordinates": [
+          18.172432,
+          40.356368
+        ],
+        "type": "Point"
+      },
+      "id": "571218ffac186b71d7c2f2821bcb17d3"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Brindisi"
+      },
+      "geometry": {
+        "coordinates": [
+          17.945306,
+          40.639969
+        ],
+        "type": "Point"
+      },
+      "id": "861d21aa96ecebb883bda0a1034314b9"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Alberobello"
+      },
+      "geometry": {
+        "coordinates": [
+          17.239347,
+          40.784362
+        ],
+        "type": "Point"
+      },
+      "id": "8998bb11bda2e559b948b21032219490"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Castellana Grotte"
+      },
+      "geometry": {
+        "coordinates": [
+          17.16499,
+          40.886389
+        ],
+        "type": "Point"
+      },
+      "id": "9644ab98f368391d161f4ba3b8874e71"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Ceglie Messapica"
+      },
+      "geometry": {
+        "coordinates": [
+          17.520123,
+          40.647501
+        ],
+        "type": "Point"
+      },
+      "id": "d0908511e39f9995f7c4c3b576f15855"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Punta Prosciutto"
+      },
+      "geometry": {
+        "coordinates": [
+          17.765583,
+          40.292765
+        ],
+        "type": "Point"
+      },
+      "id": "d39255998f00304c3031e55000a06864"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Grotta della Prima Spiaggia"
+      },
+      "geometry": {
+        "coordinates": [
+          18.447217,
+          40.249748
+        ],
+        "type": "Point"
+      },
+      "id": "ec0586071f2acf360389f00f2b990d9a"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Polignano a Mare"
+      },
+      "geometry": {
+        "coordinates": [
+          17.215413,
+          40.994309
+        ],
+        "type": "Point"
+      },
+      "id": "ec8f6bc5d6f013f875cf508d71fab5b1"
+    }
+  ],
+  "type": "FeatureCollection"
+}
