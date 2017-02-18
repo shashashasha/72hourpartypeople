@@ -17,7 +17,9 @@
 <script>
 L.mapbox.accessToken = 'pk.eyJ1Ijoic2hhIiwiYSI6ImNpemJuMzhzZDBjZngycXB4dThpMWc3YnMifQ.UTVqNsmfng8qHLNLEP5JvQ';
 var monument = [17.5055828, 40.6474206];
-var mapTooltips = L.mapbox.map('map-tooltips', 'mapbox.light')
+var mapTooltips = L.mapbox.map('map-tooltips', 'mapbox.light', {
+    zoomControl: false
+  })
   .setView([40.6, 17.5], 8);
 var myLayer = L.mapbox.featureLayer().addTo(mapTooltips);
 
