@@ -40,7 +40,7 @@ var map = new mapboxgl.Map({
     container: 'map',
     style: 'mapbox://styles/sha/cizbo8flb007j2sqiswef1bms',
     center: monument,
-    // interactive: false,
+    interactive: false,
     zoom: 8
 });
 
@@ -59,7 +59,7 @@ new mapboxgl.Marker(el, {offset:[-25, -25]})
     .addTo(map);
 
 map.on('style.load', function () {
-    map.addSource("markers", {
+    map.addSource("salento", {
         "type": "geojson",
         "data": "data/salento.geojson"
     });
@@ -67,7 +67,7 @@ map.on('style.load', function () {
     map.addLayer({
         "id": "places",
         "type": "circle",
-        "source": "markers",
+        "source": "salento",
         "paint": {
             "circle-radius": 10,
             "circle-color": "#ff442b",
@@ -99,10 +99,6 @@ map.on('click', function (e) {
 // by changing the cursor style to 'pointer'.
 map.on('mousemove', function (e) {
     var features = map.queryRenderedFeatures(e.point, { layers: ['places'] });
-    if (!features.length) {
-        return;
-    }
-
     map.getCanvas().style.cursor = (features.length) ? 'pointer' : '';
 });
 
