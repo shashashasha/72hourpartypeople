@@ -15,71 +15,24 @@
     <div class="wrapper">
       <div class="map"></div>
       <div class="content"></div>
-      <select id="projection-menu"></select>
     </div>
     <footer>
     </footer>
 
     <script type="text/javascript">
 
-    var width = 900,
-        height = 500;
+    var width = 800,
+        height = 700;
 
     var options = [
-      // {name: "Aitoff", projection: d3.geoAitoff()},
-      // {name: "Albers", projection: d3.geoAlbers().scale(145).parallels([20, 50])},
-      // {name: "August", projection: d3.geoAugust().scale(60)},
-      // {name: "Baker", projection: d3.geoBaker().scale(100)},
-      // {name: "Boggs", projection: d3.geoBoggs()},
-      {name: "Bonne", projection: d3.geoBonne().scale(120)},
-      // {name: "Bromley", projection: d3.geoBromley()},
-      // {name: "Collignon", projection: d3.geoCollignon().scale(93)},
-      // {name: "Craster Parabolic", projection: d3.geoCraster()},
-      // {name: "Eckert I", projection: d3.geoEckert1().scale(165)},
-      // {name: "Eckert II", projection: d3.geoEckert2().scale(165)},
-      // {name: "Eckert III", projection: d3.geoEckert3().scale(180)},
-      // {name: "Eckert IV", projection: d3.geoEckert4().scale(180)},
-      // {name: "Eckert V", projection: d3.geoEckert5().scale(170)},
-      // {name: "Eckert VI", projection: d3.geoEckert6().scale(170)},
-      // {name: "Eisenlohr", projection: d3.geoEisenlohr().scale(60)},
-      // {name: "Equirectangular (Plate Carrée)", projection: d3.geoEquirectangular()},
-      // {name: "Hammer", projection: d3.geoHammer().scale(165)},
-      // {name: "Hill", projection: d3.geoHill()},
-      // {name: "Gringorten", projection: d3.geoGringorten()},
-      // {name: "Gringorten Quincunical", projection: d3.geoGringortenQuincuncial()},
-      // {name: "Goode Homolosine", projection: d3.geoHomolosine()},
-      // {name: "Kavrayskiy VII", projection: d3.geoKavrayskiy7()},
-      // {name: "Lambert cylindrical equal-area", projection: d3.geoCylindricalEqualArea()},
-      // {name: "Lagrange", projection: d3.geoLagrange().scale(120)},
-      // {name: "Larrivée", projection: d3.geoLarrivee().scale(95)},
-      // {name: "Laskowski", projection: d3.geoLaskowski().scale(120)},
-      // {name: "Loximuthal", projection: d3.geoLoximuthal()},
-      // {name: "Mercator", projection: d3.geo.mercator().scale(490 / 2 / Math.PI)},
-      // {name: "Miller", projection: d3.geoMiller().scale(100)},
-      // {name: "McBryde–Thomas Flat-Polar Parabolic", projection: d3.geoMtFlatPolarParabolic()},
-      // {name: "McBryde–Thomas Flat-Polar Quartic", projection: d3.geoMtFlatPolarQuartic()},
-      // {name: "McBryde–Thomas Flat-Polar Sinusoidal", projection: d3.geoMtFlatPolarSinusoidal()},
-      // {name: "Mollweide", projection: d3.geoMollweide().scale(165)},
-      // {name: "Natural Earth", projection: d3.geoNaturalEarth()},
-      // {name: "Nell–Hammer", projection: d3.geoNellHammer()},
-      // {name: "Polyconic", projection: d3.geoPolyconic().scale(100)},
-      {name: "Rectangular Polyconic", projection: d3.geoRectangularPolyconic().scale(100)},
-      {name: "Robinson", projection: d3.geoRobinson()},
-      {name: "Sinusoidal", projection: d3.geoSinusoidal()},
-      {name: "Sinu-Mollweide", projection: d3.geoSinuMollweide()},
-      {name: "van der Grinten", projection: d3.geoVanDerGrinten().scale(75)},
-      {name: "van der Grinten IV", projection: d3.geoVanDerGrinten4().scale(120)},
-      {name: "Wagner IV", projection: d3.geoWagner4()},
-      {name: "Wagner VI", projection: d3.geoWagner6()},
-      {name: "Wagner VII", projection: d3.geoWagner7()},
-      {name: "Winkel Tripel", projection: d3.geoWinkel3()}
+      {name: "Bonne", projection: d3.geoBonne().scale(120)}
     ];
 
     options.forEach(function(o) {
       o.projection.rotate([0, 0]).center([0, 0]);
     });
 
-    var interval = null, // setInterval(loop, 1500),
+    var interval = null,
         i = 0,
         n = options.length - 1;
 
@@ -125,7 +78,8 @@
           .data([
             [-122.49, 37.7],
             [-74, 40.7],
-            [9.18, 45.46],
+            // [9.18, 45.46], // Milan
+            [17.5055828, 40.6474206], // Masseria Beneficio
             [100.5, 13.75]
           ]).enter()
             .append("circle")
@@ -133,14 +87,6 @@
             .attr("cy", projectionTween(projection, projection, "cy"))
             .attr("r", "4px");
     });
-
-    var menu = d3.select("#projection-menu")
-        .on("change", change);
-
-    menu.selectAll("option")
-        .data(options)
-      .enter().append("option")
-        .text(function(d) { return d.name; });
 
     svg.on("mousemove", zoomed);
 

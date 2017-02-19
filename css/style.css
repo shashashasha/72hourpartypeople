@@ -4,7 +4,7 @@ body {
   font-size: 24px;
   color: white;
 
-  background-color: black;
+  background-color: #adccda;
 }
 
 .content {
@@ -27,21 +27,21 @@ svg {
 }
 
 #sphere {
-  fill: #aaa;
-  stroke: #777;
-  stroke-width: 2px;
+  fill: #adccda;
+  stroke: #fff;
+  stroke-width: 4px;
   stroke-opacity: 0.5;
 }
 
 .graticule {
   fill: none;
-  stroke: #777;
+  stroke: #fff;
   stroke-width: 0.5px;
-  stroke-opacity: 0.5;
+  stroke-opacity: 0.25;
 }
 
 .land {
-  fill: #222;
+  fill: #eee;
 }
 
 .boundary {
@@ -52,4 +52,6 @@ svg {
 
 circle {
   fill: red;
+  /*fill: none;*/
+  /*stroke-width: 2px;*/
 }
