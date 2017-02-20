@@ -16,15 +16,37 @@
 <style>
 
 .marker {
-    background-size: cover;
     width: 80px;
     height: 80px;
-    border-radius: 50%;
     cursor: pointer;
+    border-radius: 50%;
+    background-size: cover;
 
-    text-align: center;
-    font-weight: 700;
     color: white;
+    font-weight: 700;
+
+    z-index: 1;
+    display: table;
+    text-align: center;
+
+    transition: width 1s, height 1s, margin-left 1s, margin-top 1s;
+}
+
+
+/* ugh what year is this even */
+.marker-text {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.marker:hover {
+    width: 200px;
+    height: 200px;
+
+    z-index: 2;
+
+    margin-left: -60px;
+    margin-top: -60px;
 }
 
 .mapboxgl-popup {
@@ -50,10 +72,6 @@ var map = new mapboxgl.Map({
 // create the popup
 var popup = new mapboxgl.Popup({offset: 25})
     .setText('Construction on the Washington Monument began in 1848.');
-
-// create DOM element for the marker
-var el = document.createElement('div');
-el.className = 'marker';
 
 var salento = {
   "features": [
@@ -232,13 +250,17 @@ salento.features.forEach(function(feature) {
     var el = document.createElement('div');
     el.className = 'marker';
     el.style.backgroundImage = 'url(' + feature.properties.image + ')';
-    el.innerHTML = feature.properties.name;
+    el.innerHTML = '<div class="marker-text">' + feature.properties.name + '</div>';
 
     var marker = new mapboxgl.Marker(el, {offset: [-40, -40] })
         .setLngLat(feature.geometry.coordinates)
         .setPopup(popup)
         .addTo(map);
 });
+
+// create DOM element for the marker
+var el = document.createElement('div');
+el.className = 'marker';
 
 // create the marker
 new mapboxgl.Marker(el, {offset:[-25, -25]})
