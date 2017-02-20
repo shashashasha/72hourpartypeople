@@ -4,7 +4,7 @@
       "type": "Feature",
       "properties": {
         "name": "Matera",
-        "title": "Matera",
+        "image": "images/matera.jpg",
         "description": "Just some stones"
       },
       "geometry": {
