@@ -8,7 +8,7 @@
     <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.32.1/mapbox-gl.css' rel='stylesheet' />
     <style>
         body { margin:0; padding:0; }
-        #map { position:absolute; top:0; bottom:0; width:100%; }
+        #map { position:absolute; top:100px; bottom:0; width:100%; }
     </style>
 </head>
 <body>
@@ -17,14 +17,18 @@
 
 #information {
     position: absolute;
-    top: 20px;
-    right: 20px;
-    width: 400px;
+    top: 0;
+    width: 100%;
+    padding: 20px;
+    height: 140px;
+    box-sizing: border-box;
+
     z-index: 3;
 
     font: 24px/28px 'Helvetica Neue', Arial, Helvetica, sans-serif;
     font-weight: 700;
     color: rgb(2, 78, 99);
+    background-color: rgb(173, 203, 218);
 }
 
 .description {
@@ -97,22 +101,6 @@ var popup = new mapboxgl.Popup({offset: 25})
 
 var salento = {
   "features": [
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "",
-        "image": "images/wedding.png",
-        "description": "This is where we're getting married!!"
-      },
-      "geometry": {
-        "coordinates": [
-          17.5137093,
-          40.605938
-        ],
-        "type": "Point"
-      },
-      "id": "2af7a9e3c00b6131726541fc0700f94d"
-    },
     {
       "type": "Feature",
       "properties": {
@@ -287,6 +275,22 @@ var salento = {
         "type": "Point"
       },
       "id": "ec8f6bc5d6f013f875cf508d71fab5b1"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "",
+        "image": "images/wedding.png",
+        "description": "This is where we're getting married!! Here it is on <a href='https://www.google.com/maps/place/Masseria+Beneficio/@40.605938,17.5137093,17z/'>Google Maps</a>."
+      },
+      "geometry": {
+        "coordinates": [
+          17.5137093,
+          40.605938
+        ],
+        "type": "Point"
+      },
+      "id": "2af7a9e3c00b6131726541fc0700f94d"
     }
   ],
   "type": "FeatureCollection"
@@ -300,15 +304,15 @@ salento.features.forEach(function(feature) {
     el.innerHTML = '<div class="marker-text">' + feature.properties.name + '</div>';
 
 
-    el.addEventListener('click', function() {
-        console.log(feature.geometry.coordinates);
+    el.addEventListener('mouseover', function() {
+        var info = document.getElementById('information');
+        info.innerHTML = feature.properties.name + '<br /><span class="description">' + feature.properties.description + '</span>';
+    });
 
+    el.addEventListener('click', function() {
         map.flyTo({ 
             center: feature.geometry.coordinates
         });
-
-        var info = document.getElementById('information');
-        info.innerHTML = feature.properties.name + '<br /><span class="description">' + feature.properties.description + '</span>';
     });
 
     var marker = new mapboxgl.Marker(el, {offset: [-40, -40] })
