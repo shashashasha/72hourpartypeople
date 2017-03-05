@@ -15,6 +15,27 @@
 
 <style>
 
+#information {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 400px;
+    z-index: 3;
+
+    font: 24px/28px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+    font-weight: 700;
+    color: rgb(2, 78, 99);
+}
+
+.description {
+    font: 15px/14px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+    font-weight: 700;
+}
+
+.description a, .description a:visited {
+    color: rgb(2, 78, 99);
+}
+
 .marker {
     width: 80px;
     height: 80px;
@@ -29,7 +50,7 @@
     display: table;
     text-align: center;
 
-    transition: width 1s, height 1s, margin-left 1s, margin-top 1s;
+    transition: width .5s, height .5s, margin-left .5s, margin-top .5s;
 }
 
 
@@ -56,6 +77,7 @@
     
 </style>
 
+<div id='information'></div>
 <div id='map'></div>
 
 <script>
@@ -65,7 +87,7 @@ var map = new mapboxgl.Map({
     container: 'map',
     style: 'mapbox://styles/sha/cizbo8flb007j2sqiswef1bms',
     center: monument,
-    interactive: false,
+    // interactive: false,
     zoom: 8
 });
 
@@ -78,9 +100,25 @@ var salento = {
     {
       "type": "Feature",
       "properties": {
+        "name": "",
+        "image": "images/wedding.png",
+        "description": "This is where we're getting married!!"
+      },
+      "geometry": {
+        "coordinates": [
+          17.5137093,
+          40.605938
+        ],
+        "type": "Point"
+      },
+      "id": "2af7a9e3c00b6131726541fc0700f94d"
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "name": "Matera",
         "image": "images/matera.jpg",
-        "description": "Just some stones"
+        "description": "Go to <a href='https://en.wikipedia.org/wiki/Matera'>Matera</a>, <a href='https://www.theatlantic.com/international/archive/2011/09/lessons-from-italys-matera-the-sustainable-city-of-stone/244622/'>the sustainable city of stone</a>, for some incredible architecture. It's a city carved from the mountainside – the old stone dwellings were filmed as the setting of The Passion of the Christ. It is ridiculously beautiful. If you're traveling Italy for architecture, spend a day or two walking around. There's also a cute cafe in <a href='https://www.google.com/maps/place/Ridola+Caff%C3%A8/@40.663936,16.609533,19z/'>Ridola Cafe</a> and a great dinner at <a href='https://www.google.com/maps/place/Baccanti/@40.6651709,16.605407,16z/'>Baccanti</a>."
       },
       "geometry": {
         "coordinates": [
@@ -110,7 +148,8 @@ var salento = {
       "type": "Feature",
       "properties": {
         "name": "Ostuni",
-        "image": "images/ostuni.jpg"
+        "image": "images/ostuni.jpg",
+        "description": "<a href='https://en.wikipedia.org/wiki/Ostuni'>Ostuni</a> is the white city on the hill near the Masseria where we're getting married. Formerly a Greek colony, the old city center is a jumble of white stone houses and narrow streets. Take a walk, enjoy the views of the countryside and sea."
       },
       "geometry": {
         "coordinates": [
@@ -125,7 +164,8 @@ var salento = {
       "type": "Feature",
       "properties": {
         "name": "Lecce",
-        "image": "images/lecce.jpg"
+        "image": "images/lecce.jpg",
+        "description": "<a href='https://en.wikipedia.org/wiki/Lecce'>Lecce</a> is the 2,000 year old capital of Puglia. It's a beautiful old town filled with a style called <a href='http://www.thethinkingtraveller.com/thinkpuglia/guide-to-puglia/history-of-puglia/the-baroque-in-lecce.aspx'>Lecce Baroque</a>. If you have time before or after the wedding, it's possible to spend a few days based in Lecce exploring the surrounding beaches and returning at night to walk around in the warm old city center. Check out <a href='http://www.nytimes.com/2013/08/11/travel/36-hours-in-lecce-italy.html'>NYT's 36 Hours in Lecce</a> or <a href='http://www.telegraph.co.uk/travel/destinations/europe/italy/puglia/articles/Food-holidays-in-Italy-what-to-eat-and-drink-in-Puglia/'>the list of typical Pugliese food</a>, including Sha's favorite orrechiette and cavatelli."
       },
       "geometry": {
         "coordinates": [
@@ -140,7 +180,8 @@ var salento = {
       "type": "Feature",
       "properties": {
         "name": "Brindisi",
-        "image": "images/brindisi.jpg"
+        "image": "images/brindisi.jpg",
+        "description": "<a href='https://en.wikipedia.org/wiki/Brindisi'>Brindisi</a> is the coastal city that many of you will probably be flying or training in to. Take a walk on the sunny harbor and eat amazing fresh ricotta or other highlights of Salento."
       },
       "geometry": {
         "coordinates": [
@@ -155,7 +196,8 @@ var salento = {
       "type": "Feature",
       "properties": {
         "name": "Alberobello",
-        "image": "images/alberobello.jpg"
+        "image": "images/alberobello.jpg",
+        "description": "<a href='https://en.wikipedia.org/wiki/Alberobello'>Alberobello</a> is a small town full of trulli – the old stone dwellings that look a little like garden gnomes. It's a little bit touristy, so don't stay here, but if you have time it's worth checking out this strange architectural treat."
       },
       "geometry": {
         "coordinates": [
@@ -170,7 +212,8 @@ var salento = {
       "type": "Feature",
       "properties": {
         "name": "Castellana Grotte",
-        "image": "images/grotte-castellana.jpg"
+        "image": "images/grotte-castellana.jpg",
+        "description": "Caves! Caves in Salento!"
       },
       "geometry": {
         "coordinates": [
@@ -185,7 +228,8 @@ var salento = {
       "type": "Feature",
       "properties": {
         "name": "Ceglie Messapica",
-        "image": "images/ceglie-messagpica.jpg"
+        "image": "images/ceglie-messagpica.jpg",
+        "description": "Colonized by the Greeks in 700BC, <a href='https://en.wikipedia.org/wiki/Ceglie_Messapica'>Ceglie Messapica</a> is the small town closest to where we're having our wedding. If you're not staying here during the wedding, it's worth stopping by for a meal to see the ridiculously narrow streets (don't get stuck!). <a href='https://www.google.com/maps/place/Cibus/@40.646432,17.5162313,17z/'>Cibus</a> is a delicious dinner – they have a wine cellar with thousands of old bottles, and make plenty of their own amari."
       },
       "geometry": {
         "coordinates": [
@@ -200,7 +244,8 @@ var salento = {
       "type": "Feature",
       "properties": {
         "name": "Punta Prosciutto",
-        "image": "images/punta-prosciutto.jpg"
+        "image": "images/punta-prosciutto.jpg",
+        "description": "Beach!"
       },
       "geometry": {
         "coordinates": [
@@ -215,7 +260,8 @@ var salento = {
       "type": "Feature",
       "properties": {
         "name": "Grotta della Prima Spiaggia",
-        "image": "images/grotta-prima-spiaggia.jpg"
+        "image": "images/grotta-prima-spiaggia.jpg",
+        "description": "Beach!"
       },
       "geometry": {
         "coordinates": [
@@ -230,7 +276,8 @@ var salento = {
       "type": "Feature",
       "properties": {
         "name": "Polignano a Mare",
-        "image": "images/polignano-a-mare.jpg"
+        "image": "images/polignano-a-mare.jpg",
+        "description": "The coastal town of <a href='https://en.wikipedia.org/wiki/Polignano_a_Mare'>Polignano a Mare</a> is absolutely beautiful. The buildings run right up to the seaside cliffs. Spend a day here and walk up and down the cliffs – the architecture of the old town is remarkable."
       },
       "geometry": {
         "coordinates": [
@@ -252,64 +299,21 @@ salento.features.forEach(function(feature) {
     el.style.backgroundImage = 'url(' + feature.properties.image + ')';
     el.innerHTML = '<div class="marker-text">' + feature.properties.name + '</div>';
 
+
+    el.addEventListener('click', function() {
+        console.log(feature.geometry.coordinates);
+
+        map.flyTo({ 
+            center: feature.geometry.coordinates
+        });
+
+        var info = document.getElementById('information');
+        info.innerHTML = feature.properties.name + '<br /><span class="description">' + feature.properties.description + '</span>';
+    });
+
     var marker = new mapboxgl.Marker(el, {offset: [-40, -40] })
         .setLngLat(feature.geometry.coordinates)
-        .setPopup(popup)
         .addTo(map);
-});
-
-// create DOM element for the marker
-var el = document.createElement('div');
-el.className = 'marker';
-
-// create the marker
-new mapboxgl.Marker(el, {offset:[-25, -25]})
-    .setLngLat(monument)
-    .setPopup(popup) // sets a popup on this marker
-    .addTo(map);
-
-// map.on('style.load', function () {
-//     map.addSource("salento", {
-//         "type": "geojson",
-//         "data": "data/salento.geojson"
-//     });
-
-//     map.addLayer({
-//         "id": "places",
-//         "type": "circle",
-//         "source": "salento",
-//         "paint": {
-//             "circle-radius": 10,
-//             "circle-color": "#ff442b",
-//             "circle-opacity": 0.6
-//         }
-//     });
-// });
-
-// When a click event occurs near a place, open a popup at the location of
-// the feature, with description HTML from its properties.
-map.on('click', function (e) {
-    var features = map.queryRenderedFeatures(e.point, { layers: ['places'] });
-
-    if (!features.length) {
-        return;
-    }
-
-    var feature = features[0];
-
-    // Populate the popup and set its coordinates
-    // based on the feature found.
-    var popup = new mapboxgl.Popup()
-        .setLngLat(feature.geometry.coordinates)
-        .setHTML(feature.properties.name + '<br/>' + feature.properties.description)
-        .addTo(map);
-});
-
-// Use the same approach as above to indicate that the symbols are clickable
-// by changing the cursor style to 'pointer'.
-map.on('mousemove', function (e) {
-    var features = map.queryRenderedFeatures(e.point, { layers: ['places'] });
-    map.getCanvas().style.cursor = (features.length) ? 'pointer' : '';
 });
 
 </script>
