@@ -26,16 +26,33 @@
 }
 
 .mapboxgl-popup {
-    font: 34px/36px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+    font: 35px/36px 'Helvetica Neue', Arial, Helvetica, sans-serif;
     font-weight: 700;
     max-width: 300px;
-    color: rgb(2, 78, 99);
+    color: white;
+
+    background-color: rgb(2, 78, 99);
 }
 
 .mapboxgl-popup a, .mapboxgl-popup .subtitle {
     font: 12px/18px 'Helvetica Neue', Arial, Helvetica, sans-serif;
     font-weight: 700;
-    color: rgb(2, 78, 99);
+    color: white;
+}
+
+/* thank you cssarrowplease.com */
+.mapboxgl-popup:after {
+    top: 100%;
+    left: 50%;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+    border-top-color: rgb(2, 78, 99);
+    border-width: 30px;
+    margin-left: -30px;
 }
 
 .mapboxgl-popup-content, .mapboxgl-popup-tip { 
@@ -61,20 +78,20 @@ var map = new mapboxgl.Map({
 
 // create the popup
 var popup = new mapboxgl.Popup({
-        offset: 50, 
+        offset: 30, 
         closeButton: false
     })
-    .setHTML('<div>WE ARE HERE.</div><div class="subtitle">Masseria Beneficio near Ceglie Messapica.<br/><a href="https://www.google.com/maps/place/Masseria+Beneficio/@40.605938,17.515898,10z/">Link to location.</a></div>');
+    .setHTML('<div>WE ARE HERE</div><div class="subtitle">Masseria Beneficio near Ceglie Messapica<br/><a href="https://www.google.com/maps/place/Masseria+Beneficio/@40.605938,17.5137093,15z/data=!4m5!3m4!1s0x134658521c47e6eb:0x7b6013bc7b216c6!8m2!3d40.605938!4d17.515898" target="_blank">Link to location</a></div><div class="tip"></div>');
 
 // create DOM element for the marker
 var el = document.createElement('div');
 el.id = 'marker';
 
-// create the marker
-new mapboxgl.Marker(el, {offset:[-25, -50]})
-    .setLngLat(masseria)
-    .setPopup(popup) // sets a popup on this marker
-    .addTo(map);
+// hide the marker because we don't want it
+// new mapboxgl.Marker(el, {offset:[-25, -50]})
+//     .setLngLat(masseria)
+//     .setPopup(popup) // sets a popup on this marker
+//     .addTo(map);
 
 // add the popup by default
 popup.setLngLat(masseria)
